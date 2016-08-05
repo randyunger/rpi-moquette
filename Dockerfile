@@ -1,17 +1,17 @@
 #i86
-FROM dordoka/rpi-java8
+#FROM dordoka/rpi-java8
 
 #ARM
-#FROM dordoka/rpi-java8
+FROM hypriot/rpi-alpine-scratch
 
 MAINTAINER Randle Unger <randy.unger@gmail.com>
 
 ENV MOQUETTE_VERSION 0.8
 
 # Get wget
-RUN  apt-get update \
-  && apt-get install -y wget \
-  && rm -rf /var/lib/apt/lists/*
+RUN  apk update \
+  && apk add wget \
+#  && rm -rf /var/lib/apt/lists/*
 
 # Get Moquette
 RUN wget --quiet --no-cookies https://bintray.com/artifact/download/andsel/generic/distribution-${MOQUETTE_VERSION}-bundle-tar.tar.gz -O /tmp/moquette.tgz
